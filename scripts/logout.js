@@ -24,7 +24,7 @@ export const createLogout = (user) => {
   btnLogout.addEventListener("click", () => {
     localStorage.removeItem("token")
 
-    window.location.replace("/index.html")
+    window.location.replace("../index.html")
   })
 
   div.appendChild(btnLogout)

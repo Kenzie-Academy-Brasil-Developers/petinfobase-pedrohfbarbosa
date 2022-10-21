@@ -29,7 +29,7 @@ export const register = async (body) => {
       document.querySelector("body").appendChild(toltip("register"))
 
       setTimeout(() => {
-        window.location.replace("/index.html")
+        window.location.replace("../index.html")
 
         btnRegister.innerHTML = ""
         btnRegister.innerText = "Cadastrar"
@@ -85,7 +85,7 @@ export const login = async (body) => {
 
       document.getElementById("wrong-password-span").classList.add("transparent")
 
-      window.location.replace("/pages/home/index.html")
+      window.location.replace("./pages/home/index.html")
 
     } else {
       document.getElementById("wrong-password-span").classList.remove("transparent")
