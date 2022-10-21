@@ -6,6 +6,7 @@ import { renderCreatePost } from "../../scripts/modal_create_post.js";
 
 
 security()
+
 const token = JSON.parse(localStorage.getItem("token"))
 
 await avatarAddLogout(await getUserData(token))

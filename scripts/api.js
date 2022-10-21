@@ -23,8 +23,6 @@ export const register = async (body) => {
     const responseJson = await fetch(`${baseUrl}users/create`, options)
     const response = await responseJson.json()
 
-
-
     if (responseJson.ok) {
       document.getElementById("email-exists").classList.add("transparent")
 
@@ -36,8 +34,6 @@ export const register = async (body) => {
         btnRegister.innerHTML = ""
         btnRegister.innerText = "Cadastrar"
       }, 4000);
-
-      
 
     } else if (response.message.includes("Email já cadastrado")) {
       document.getElementById("email-exists").classList.remove("transparent")
@@ -65,7 +61,6 @@ export const register = async (body) => {
     btnRegister.innerHTML = ""
     btnRegister.innerText = "Cadastrar"
   }
-
 }
 
 export const login = async (body) => {
@@ -92,7 +87,6 @@ export const login = async (body) => {
 
       window.location.replace("/pages/home/index.html")
 
-      
     } else {
       document.getElementById("wrong-password-span").classList.remove("transparent")
     }
@@ -174,11 +168,25 @@ export const editPost = async (id, token, body) => {
         toltipNew.remove()
       }, 4000);
 
+    } else {
+      const toltipNew = toltip()
+      document.querySelector("body").appendChild(toltipNew)
+
+      setTimeout(() => {
+        toltipNew.remove()
+      }, 4000);
     }
 
     return response
   } catch (err) {
     console.log(err)
+
+    const toltipNew = toltip()
+    document.querySelector("body").appendChild(toltipNew)
+
+    setTimeout(() => {
+      toltipNew.remove()
+    }, 4000);
   }
 }
 
@@ -192,12 +200,10 @@ export const createPost = async (token, body) => {
     body: JSON.stringify(body)
   }
 
-  try { 
+  try {
 
     const responseJson = await fetch(`${baseUrl}posts/create`, options)
     const response = await responseJson.json()
-    console.log(responseJson)
-    console.log(response)
 
     if (responseJson.ok) {
       const toltipNew = toltip("create")
@@ -206,12 +212,26 @@ export const createPost = async (token, body) => {
       setTimeout(() => {
         toltipNew.remove()
       }, 4000);
+    } else {
+      const toltipNew = toltip()
+      document.querySelector("body").appendChild(toltipNew)
+
+      setTimeout(() => {
+        toltipNew.remove()
+      }, 4000);
     }
-    
+
     return response
 
-  } catch(err) {
+  } catch (err) {
     console.log(err)
+
+    const toltipNew = toltip()
+    document.querySelector("body").appendChild(toltipNew)
+
+    setTimeout(() => {
+      toltipNew.remove()
+    }, 4000);
   }
 }
 
@@ -236,11 +256,25 @@ export const deletePost = async (id, token) => {
       setTimeout(() => {
         toltipNew.remove()
       }, 4000);
+    } else {
+      const toltipNew = toltip()
+      document.querySelector("body").appendChild(toltipNew)
+
+      setTimeout(() => {
+        toltipNew.remove()
+      }, 4000);
     }
 
     return response
 
-  }catch(err) {
+  } catch (err) {
     console.log(err)
+
+    const toltipNew = toltip()
+    document.querySelector("body").appendChild(toltipNew)
+
+    setTimeout(() => {
+      toltipNew.remove()
+    }, 4000);
   }
 }

@@ -51,31 +51,20 @@ export const createCard = (e, user) => {
   const btnsHeader = document.createElement("div")
   btnsHeader.classList.add("btns-header")
 
-  const btnEdit = document.createElement("button")
-  btnEdit.classList.add("btn-card")
-  btnEdit.setAttribute("data-control-edit", `${e.id}`)
-  btnEdit.innerText = "Editar"
   if (user.email == e.user.email){
-    btnEdit.disabled = false
-    btnEdit.classList.remove("btn-disabled")
-  }else {
-    btnEdit.disabled = true
-    btnEdit.classList.add("btn-disabled")
-  }
 
-  const btnDelete = document.createElement("button")
-  btnDelete.classList.add("btn-card")
-  btnDelete.setAttribute("data-control-remove", `${e.id}`)
-  btnDelete.innerText = "Excluir"
-  if (user.email === e.user.email){
-    btnDelete.disabled = false
-    btnDelete.classList.remove("btn-disabled")
-  }else {
-    btnDelete.disabled = true
-    btnDelete.classList.add("btn-disabled")
-  }
-
-  btnsHeader.append(btnEdit, btnDelete)
+    const btnEdit = document.createElement("button")
+    btnEdit.classList.add("btn-card")
+    btnEdit.setAttribute("data-control-edit", `${e.id}`)
+    btnEdit.innerText = "Editar"
+  
+    const btnDelete = document.createElement("button")
+    btnDelete.classList.add("btn-card")
+    btnDelete.setAttribute("data-control-remove", `${e.id}`)
+    btnDelete.innerText = "Excluir"
+  
+    btnsHeader.append(btnEdit, btnDelete)
+  }  
 
   cardHeader.appendChild(btnsHeader)
 

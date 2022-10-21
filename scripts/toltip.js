@@ -56,6 +56,23 @@ export const toltip = (messageType) => {
       O seu post foi criado e agora você pode ver no feed
     </p>
     `
+  }else {
+    toltip.innerHTML = `
+    <div class="toltip-header">
+      <div class="alert">
+        <span class="text-4 gray-9">
+          !
+        </span>        
+      </div>
+      <h3 class="text-2 alert-1">
+        Algo deu errado!
+      </h3>
+    </div>
+    <p class="text-5 gray-2"> 
+      Verifique sua conexão com a internet
+    </p>
+    `
   }
+
   return toltip
 }

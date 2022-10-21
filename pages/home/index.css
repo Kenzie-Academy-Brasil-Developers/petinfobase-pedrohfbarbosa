@@ -6,7 +6,7 @@ header {
   height: 7rem;
 }
 
-header .div-header{
+header .div-header {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -30,13 +30,11 @@ header .div-header-wrapper {
   position: absolute;
   top: 2.7rem;
   right: 0;
-  
+
   width: 13.438rem;
   height: 7.313rem;
 
   animation: logout 1000ms;
-
-
 }
 
 .logout div {
@@ -60,9 +58,9 @@ header .div-header-wrapper {
   display: flex;
 
   padding: 0 0.5rem;
-
 }
-.logout button:hover {  
+
+.logout button:hover {
   opacity: 1;
   background-color: var(--gray600);
 }
@@ -110,7 +108,6 @@ main {
 .card-header {
   display: flex;
   justify-content: space-between;
-
 }
 
 .card-header-info {
@@ -133,7 +130,7 @@ main {
 .card-header-info-avatar {
   width: 2rem;
   height: 2rem;
-  
+
   border: 1px solid var(--brand100);
   border-radius: var(--radius-rounded);
 
@@ -145,7 +142,7 @@ main {
   justify-content: center;
 }
 
-.card-header-info-avatar img{
+.card-header-info-avatar img {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -157,11 +154,9 @@ main {
 }
 
 .modal-wrapper form {
-  
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  
 }
 
 .modal-wrapper form div {
@@ -184,6 +179,7 @@ main {
   0% {
     margin-top: -20%;
   }
+
   100% {
     margin-top: 0;
   }
@@ -191,4 +187,12 @@ main {
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 700px) {
+  body {
+    height: 100%;
+    width: 100vw;
+    padding: 0 1rem;
+  }
 }

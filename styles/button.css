@@ -129,6 +129,7 @@ button:hover {
   background-color: var(--gray600);
   color: var(--gray400);
   cursor: default;
+  border: none;
 }
 
 .btn-disabled:hover {
