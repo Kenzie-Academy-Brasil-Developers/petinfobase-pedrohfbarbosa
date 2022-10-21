@@ -20,8 +20,8 @@ aside {
   
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 1.5rem;
+  justify-content: center;
+  gap: 2rem;
 }
 
 
@@ -41,12 +41,18 @@ main {
   border-radius: var(--radius-1);
 }
 
+main .register-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 main form {
   min-height: 16rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
+  gap: 1.5rem;
 }
 
 main form div {

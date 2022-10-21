@@ -1,1 +1,5 @@
-/* Desenvolva seu código aqui */
+const baseUrl = "http://localhost:3333/"
+
+export const login = (body) => {
+  
+}
