@@ -17,7 +17,7 @@ export const toltip = (messageType) => {
     </p>
     `
   
-  }else {
+  }else if (messageType == "delete"){
     toltip.innerHTML = `
     <div class="toltip-header">
       <div class="check">        
@@ -30,7 +30,32 @@ export const toltip = (messageType) => {
       O post selecionado para exlusão foi deletado, a partir de agora não aparecerá no seu feed  
     </p>
     `
+  }else if (messageType == "edit") {
+    toltip.innerHTML = `
+    <div class="toltip-header">
+      <div class="check">        
+      </div>
+      <h3 class="text-2 success-1">
+        Post alterado com sucesso!
+      </h3>
+    </div>
+    <p class="text-5 gray-2"> 
+      O post selecionado foi alterado conforme solicitado
+    </p>
+    `
+  }else if (messageType == "create") {
+    toltip.innerHTML = `
+    <div class="toltip-header">
+      <div class="check">        
+      </div>
+      <h3 class="text-2 success-1">
+        Post criado com sucesso!
+      </h3>
+    </div>
+    <p class="text-5 gray-2"> 
+      O seu post foi criado e agora você pode ver no feed
+    </p>
+    `
   }
-
-  document.querySelector("body").appendChild(toltip)
+  return toltip
 }

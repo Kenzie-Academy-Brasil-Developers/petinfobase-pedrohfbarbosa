@@ -1,4 +1,7 @@
-const modalDeletePost = () => {
+import { deletePost, getAllPosts, getUserData } from "./api.js"
+import { renderCards } from "./card_post.js"
+
+const modalDeletePost = (id) => {
   const modal = document.createElement("div")
   modal.classList.add("modal")
 
@@ -51,8 +54,13 @@ const modalDeletePost = () => {
   const btnDelete = document.createElement("button")
   btnDelete.classList.add("delete-post")
   btnDelete.innerText = "Sim, excluir este post"  
-  btnDelete.addEventListener("click", () => {
-    
+  btnDelete.addEventListener("click", async () => {
+    await deletePost(id, JSON.parse(localStorage.getItem("token")))
+
+    modal.remove()
+
+    await renderCards(await getAllPosts(JSON.parse(localStorage.getItem("token"))), await getUserData(JSON.parse(localStorage.getItem("token"))), JSON.parse(localStorage.getItem("token")))
+
   })
 
   divBtns.append(btnCancel, btnDelete) 
@@ -67,18 +75,15 @@ const modalDeletePost = () => {
 export const deleteModalControl = (posts) => {
   const body = document.querySelector("body")
 
-  const deleteBtns = [...document.querySelectorAll("[data-control-remove]")]
-  
+  const deleteBtns = [...document.querySelectorAll("[data-control-remove]")]  
 
   deleteBtns.forEach((btn) => {
 
-    const btnId = btn.getAttribute("data-control-remove")
-
-    const index = posts.findIndex(e => e.id == btnId)
+    const postId = btn.getAttribute("data-control-remove")
 
     btn.addEventListener("click", () => {
 
-      body.appendChild(modalDeletePost())
+      body.appendChild(modalDeletePost(postId))
       
     })
   })

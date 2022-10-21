@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../../styles/images.css">
   <link rel="stylesheet" href="../../styles/input.css">
   <link rel="stylesheet" href="../../styles/button.css">
+  <link rel="stylesheet" href="../../styles/toltip.css">
   <link rel="stylesheet" href="./index.css">
   <title>Petinfo - Register</title>
 </head>
@@ -32,7 +33,7 @@
         </a>
 
       </div>
-      <form class="login-form">
+      <form id="register-form">
 
         <div>
 
@@ -49,6 +50,7 @@
             E-mail
           </label>
           <input class="input-form" id="email" name="email" type="email" placeholder="Digite seu melhor e-mail..." required="true">
+          
 
         </div>
 
@@ -69,8 +71,12 @@
           <input class="input-form" id="password" name="password" type="password" placeholder="Digite sua senha aqui..." required="true">
           
         </div>
+        
+        <span id="email-exists" class="text-4 alert-1 transparent">
+          Usuário já cadastrado
+        </span>
 
-        <button class="btn-form-1" type="submit">
+        <button id="btn-register" class="btn-form-1" type="submit">
           Cadastrar
         </button>        
 

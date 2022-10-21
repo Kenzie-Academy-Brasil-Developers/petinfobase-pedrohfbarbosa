@@ -1,3 +1,6 @@
+import { editPost, getAllPosts, getUserData } from "./api.js"
+import { renderCards } from "./card_post.js"
+
 const modalEditPost = (post) => {
   const modal = document.createElement("div")
   modal.classList.add("modal")
@@ -86,7 +89,7 @@ const modalEditPost = (post) => {
 
   form.append(divTitle, divContent, divBtns)
 
-  const formElements = [...form.elements]
+  const formElements = [...form.elements]  
 
   formElements.forEach((e) => {
     if (e.nodeName == "INPUT" || e.nodeName == "TEXTAREA"){
@@ -102,10 +105,23 @@ const modalEditPost = (post) => {
     }
   })
 
-  form.addEventListener("submit", (e)=>{
+  form.addEventListener("submit", async (e) => {
     e.preventDefault()
-   
-  })
+
+    const objData = {}
+
+    formElements.forEach((elem) => {
+      if(elem.name) {
+        objData[elem.name] = elem.value
+      }
+    })
+
+    await editPost(post.id, JSON.parse(localStorage.getItem("token")), objData)
+
+    modal.remove()
+
+    await renderCards(await getAllPosts(JSON.parse(localStorage.getItem("token"))), await getUserData(JSON.parse(localStorage.getItem("token"))), JSON.parse(localStorage.getItem("token")))
+  })  
 
   modalWrapper.append(cardHeader, form)
 

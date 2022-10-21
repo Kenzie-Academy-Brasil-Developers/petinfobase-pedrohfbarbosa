@@ -110,6 +110,10 @@
   background-color: var(--success100);
 }
 
+.transparent {
+  color: transparent;
+}
+
 .bg-transparent {
   background-color: transparent;
 }

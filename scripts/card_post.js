@@ -1,3 +1,11 @@
+import { renderCreatePost } from "./modal_create_post.js";
+import { controlModal } from "./modal_show_post.js"
+import { editModalControl } from "./modal_edit_post.js";
+import { deleteModalControl } from "./modal_delete_post.js";
+import { getAllPosts } from "./api.js";
+import { security } from "./security.js";
+
+
 export const transformDate = (date) => { 
   const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 
@@ -93,13 +101,18 @@ export const createCard = (e, user) => {
   return card
 }
 
-export const renderCards = (posts, user) => {
+export const renderCards = async (posts, user, token) => {
+  security()
+
   const ul = document.querySelector(".cards-wrapper")
   ul.innerHTML = ""
   
   posts.forEach(post => ul.appendChild(createCard(post, user)))
+
+  await controlModal(await getAllPosts(token))
+
+  await editModalControl(await getAllPosts(token))
+
+  await deleteModalControl(await getAllPosts(token))
 }
 
-export const avatarAdd = (user) => {
-  document.getElementById("avatar-header-img").src = user.avatar
-}
