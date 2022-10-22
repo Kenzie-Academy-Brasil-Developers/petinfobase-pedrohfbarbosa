@@ -29,7 +29,7 @@ export const register = async (body) => {
       document.querySelector("body").appendChild(toltip("register"))
 
       setTimeout(() => {
-        window.location.replace("./index.html")
+        window.location.replace("../../index.html")
 
         btnRegister.innerHTML = ""
         btnRegister.innerText = "Cadastrar"

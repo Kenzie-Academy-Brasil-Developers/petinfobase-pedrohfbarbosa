@@ -14,7 +14,7 @@ export const createLogout = (user) => {
   const btnLogout = document.createElement("button")
   btnLogout.innerHTML = `
   <div>
-    <img src="./assets/img/sign-out-alt.png" alt="Logout">
+    <img src="../../assets/img/sign-out-alt.png" alt="Logout">
   </div>
   <span class="text-4 gray-1">
     Sair da conta
@@ -24,7 +24,7 @@ export const createLogout = (user) => {
   btnLogout.addEventListener("click", () => {
     localStorage.removeItem("token")
 
-    window.location.replace("./index.html")
+    window.location.replace("../../index.html")
   })
 
   div.appendChild(btnLogout)
