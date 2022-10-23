@@ -60,6 +60,13 @@ export const register = async (body) => {
 
     btnRegister.innerHTML = ""
     btnRegister.innerText = "Cadastrar"
+
+    const toltipNew = toltip()
+    document.querySelector("body").appendChild(toltipNew)
+
+    setTimeout(() => {
+      toltipNew.remove()
+    }, 4000);
   }
 }
 
@@ -99,10 +106,15 @@ export const login = async (body) => {
   } catch (err) {
     console.log(err)
 
-    document.getElementById("wrong-password-span").classList.remove("transparent")
-
     btnLogin.innerHTML = ""
     btnLogin.innerText = "Acessar"
+
+    const toltipNew = toltip()
+    document.querySelector("body").appendChild(toltipNew)
+
+    setTimeout(() => {
+      toltipNew.remove()
+    }, 4000);
   }
 }
 
@@ -124,6 +136,13 @@ export const getUserData = async (token) => {
 
   } catch (err) {
     console.log(err)
+
+    const toltipNew = toltip()
+    document.querySelector("body").appendChild(toltipNew)
+
+    setTimeout(() => {
+      toltipNew.remove()
+    }, 4000);
   }
 }
 
@@ -143,6 +162,13 @@ export const getAllPosts = async (token) => {
     return response
   } catch (err) {
     console.log(err)
+
+    const toltipNew = toltip()
+    document.querySelector("body").appendChild(toltipNew)
+
+    setTimeout(() => {
+      toltipNew.remove()
+    }, 4000);
   }
 }
 
