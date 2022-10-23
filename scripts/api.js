@@ -9,6 +9,7 @@ export const register = async (body) => {
   const btnRegister = document.getElementById("btn-register")
   btnRegister.innerHTML = ""
   btnRegister.appendChild(createSpinner())
+  document.getElementById("email-exists").classList.add("transparent")
 
   const options = {
     method: "POST",
@@ -36,17 +37,24 @@ export const register = async (body) => {
       }, 4000);
 
     } else if (response.message.includes("Email já cadastrado")) {
-      document.getElementById("email-exists").classList.remove("transparent")
 
-      btnRegister.innerHTML = ""
-      btnRegister.innerText = "Cadastrar"
+      setTimeout(() => {
+        document.getElementById("email-exists").innerText = "Usuário já cadastrado"
+        document.getElementById("email-exists").classList.remove("transparent")
+
+        btnRegister.innerHTML = ""
+        btnRegister.innerText = "Cadastrar"
+      }, 1000);
     } else {
-      document.getElementById("email-exists").innerText = "Algo deu errado"
 
-      document.getElementById("email-exists").classList.remove("transparent")
+      setTimeout(() => {
+        document.getElementById("email-exists").innerText = "Algo deu errado"
 
-      btnRegister.innerHTML = ""
-      btnRegister.innerText = "Cadastrar"
+        document.getElementById("email-exists").classList.remove("transparent")
+
+        btnRegister.innerHTML = ""
+        btnRegister.innerText = "Cadastrar"
+      }, 1000);
     }
 
     return response
@@ -54,17 +62,17 @@ export const register = async (body) => {
   } catch (err) {
     console.log(err)
 
-    document.getElementById("email-exists").innerText = "Algo deu errado"
-
-    document.getElementById("email-exists").classList.remove("transparent")
-
-    btnRegister.innerHTML = ""
-    btnRegister.innerText = "Cadastrar"
 
     const toltipNew = toltip()
     document.querySelector("body").appendChild(toltipNew)
 
     setTimeout(() => {
+      document.getElementById("email-exists").innerText = "Algo deu errado"
+
+      document.getElementById("email-exists").classList.remove("transparent")
+      btnRegister.innerHTML = ""
+      btnRegister.innerText = "Cadastrar"
+
       toltipNew.remove()
     }, 4000);
   }
@@ -74,6 +82,7 @@ export const login = async (body) => {
   const btnLogin = document.getElementById("btn-access")
   btnLogin.innerHTML = ""
   btnLogin.appendChild(createSpinner())
+  document.getElementById("wrong-password-span").classList.add("transparent")
 
   const options = {
     method: "POST",
@@ -90,29 +99,43 @@ export const login = async (body) => {
     if (responseJson.ok) {
       localStorage.setItem("token", JSON.stringify(response.token))
 
-      document.getElementById("wrong-password-span").classList.add("transparent")
+      setTimeout(() => {
 
-      window.location.replace("./pages/home/index.html")
+        window.location.replace("./pages/home/index.html")
+
+        btnLogin.innerHTML = ""
+        btnLogin.innerText = "Acessar"
+
+      }, 1000);
+
 
     } else {
-      document.getElementById("wrong-password-span").classList.remove("transparent")
+
+      setTimeout(() => {
+
+        document.getElementById("wrong-password-span").classList.remove("transparent")
+
+        btnLogin.innerHTML = ""
+        btnLogin.innerText = "Acessar"
+
+      }, 1000);
     }
 
-    btnLogin.innerHTML = ""
-    btnLogin.innerText = "Acessar"
+
 
     return response
 
   } catch (err) {
     console.log(err)
 
-    btnLogin.innerHTML = ""
-    btnLogin.innerText = "Acessar"
-
     const toltipNew = toltip()
     document.querySelector("body").appendChild(toltipNew)
 
     setTimeout(() => {
+
+      btnLogin.innerHTML = ""
+      btnLogin.innerText = "Acessar"
+
       toltipNew.remove()
     }, 4000);
   }
